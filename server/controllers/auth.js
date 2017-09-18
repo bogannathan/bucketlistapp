@@ -5,6 +5,10 @@ exports.signup = function(req, res, next){
 	let email = req.body.email;
 	let password = req.body.password;
 
+	if( !email || !password) {
+		return res.status(418).send({error: 'you must provide email and pw.'})
+	}
+
 	User.findOne({ email: email }, function(err, existingUser) {
 		if(err) {
 			return next(err);
@@ -22,7 +26,7 @@ exports.signup = function(req, res, next){
 
 		user.save(function(err) {
 			if(err) { return next(err); }
-			
+
 			res.json({success:true});
 		});
 	})
