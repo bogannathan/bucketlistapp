@@ -3,9 +3,9 @@ const http = require('http');
 const bodyParser = require('body-parser');
 const app = express();
 const router = require('./router');
-const mongoose = requrie('mongoose')
+const mongoose = require('mongoose')
 
-mongoose.connect('mongodb://localhose:bucket/bucket')
+mongoose.connect('mongodb://localhost:bucket/bucket')
 app.use(bodyParser.json({ type: '*/*'}));
 router(app);
 
