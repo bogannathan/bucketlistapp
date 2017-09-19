@@ -17,6 +17,7 @@ let localLogin = new LocalStrategy(localOptions, function(email, password, done)
 
 			if (!isMatch) { return done(null, false); }
 
+
 			return done(null, user);
 		})
 	})
