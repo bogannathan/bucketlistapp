@@ -6,6 +6,7 @@ import SearchBar from './search-bar';
 import VideoDetail from './video-detail';
 
 const API_KEY = 'AIzaSyBmQ0B4J_cyTZ2OKcJW9m-B7z9JAQ5fCQY';
+
 class Video extends Component {
 	constructor(props) {
 		super(props);
@@ -13,7 +14,7 @@ class Video extends Component {
 			videos: [],
 			selectedVideo: null
 		};
-		this.videoSearch('bucketlist');
+		this.videoSearch('napoleon dynamite');
 	}
 	videoSearch(term) {
 		YTSearch({key: API_KEY, term: term}, (videos) => {
@@ -24,10 +25,10 @@ class Video extends Component {
 		})
 	}
 	render() {
-		const videoSearch = +.debounce((term)=>{ this.videoSearch(term) }, 300);
+		const videoSearch = _.debounce((term)=>{ this.videoSearch(term) }, 300);
 		return (
 			<div>
-				<SearchBar on searchTermChange={videoSearch} />
+				<SearchBar onSearchTermChange={videoSearch} />
 				<VideoDetail video={this.state.selectedVideo}/>
 			</div>
 		)
