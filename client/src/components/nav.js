@@ -10,7 +10,7 @@ class NavBarHeader extends Component {
 		}else {
 			return [
 			<NavItem key={1} href='/signin'>Sign In</NavItem>,
-			<NavItem key={2} href='#'>Sign Up</NavItem>,
+			<NavItem key={2} href='/signup'>Sign Up</NavItem>,
 			<NavDropdown key={3} title="Fun stuff" id="basic-nav-dropdown">,
 				<MenuItem key={3.1}>Add new item</MenuItem>,
 			    <MenuItem key={3.2}>Another action</MenuItem>,
