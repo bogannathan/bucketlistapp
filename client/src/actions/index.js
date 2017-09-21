@@ -1,6 +1,6 @@
 import axios from 'axios';
 import { browserHistory } from 'react-router';
-import { AUTH_USER, UNAUTH_USER }from './types';
+import { AUTH_USER, UNAUTH_USER, AUTH_ERROR }from './types';
 import authReducer from '../reducers/auth_reducer';
 
 // const ROOT_URL = 'http://rest.learncode.academy/api/nathan';
@@ -24,7 +24,19 @@ export function signinUser({ email, password }){
 					localStorage.setItem('token', response.data.token);
 					browserHistory.push('/newitem');
 				})
-					.catch(() => {
-				})
+					.catch(response => dispatch(authError("Bad login info")))
 	}
+}
+
+export function authError(error) {
+	return { 
+		type: AUTH_ERROR,
+		payload: error
+	}
+}
+
+export function signoutUser() {
+	localStorage.removeItem('token');
+
+	return {type: UNAUTH_USER}
 }
