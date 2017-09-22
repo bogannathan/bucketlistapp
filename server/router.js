@@ -12,4 +12,5 @@ module.exports = function(app) {
 	app.post('/newItem', requireAuth, BucketList.addBucketList);
 	app.post('/signup', Auth.signup)	
 	app.post('/signin', requireSignin, Auth.signin);
+	app.get('/items', requireAuth, BucketList.fetchBucketLists)
 }
