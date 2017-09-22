@@ -18,7 +18,7 @@ export function createPost(props) {
 				type: CREATE_POSTS,
 				payload: request
 			})
-		browserHistory.push('/newitem');
+		browserHistory.push('/items');
 		})
 	}
 }
@@ -67,6 +67,10 @@ export function fetchPosts() {
 		axios.get(`${ROOT_URL}/items`, config)
 		.then((response) => {
 			console.log("Response here", response.data)
+			const posts = response.data;
+			 this.setState({
+	        	posts: [ ...posts ]
+	        })
 			dispatch({
 				type: FETCH_POSTS,
 				payload: response.data
